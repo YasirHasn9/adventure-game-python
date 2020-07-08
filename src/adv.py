@@ -1,5 +1,5 @@
 from room import Room
-print(Room)
+from player import Player
 
 # Declare all the rooms
 
