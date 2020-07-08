@@ -1,4 +1,5 @@
 from room import Room
+print(Room)
 
 # Declare all the rooms
 
