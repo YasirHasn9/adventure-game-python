@@ -38,13 +38,35 @@ room['treasure'].s_to = room['narrow']
 # Main
 #
 
+print(f'''                                     The Game of Adventure
+''')
+
+user_name = input('what is your name young man ? ')
+
 # Make a new player object that is currently in the 'outside' room.
+player = Player(user_name, room["outside"])
+
+
+while True:
+    print(f'''
+                                             Welcome {user_name}  😊
+
+Your Journey start from room: {player.current_room.name} at {player.current_room.description}
+
+
+                        [N]for North 👆   [S] for South 👇  [D] for East 👉 [A] for West 👈 [Q] to Quit 🙁
+''')
+
+
 
 # Write a loop that:
 #
+
 # * Prints the current room name
+
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
+
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
