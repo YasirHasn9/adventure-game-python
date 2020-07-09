@@ -34,71 +34,68 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
-# Main
-#
 
-print(f'''                                     The Game of Adventure
+print(f'''                                     
+                                            The Game of Adventure
 ''')
+user_name = input("What is your name ? ")
 
-user_name = input('what is your name young man ? ')
+print(
+    f''' 
+                                             Welcome {user_name}  😊
+    '''
+)
+player = Player(user_name, room['outside'])
 
-# Make a new player object that is currently in the 'outside' room.
-player = Player(user_name, room["outside"])
+game_on = True
+while game_on:
 
+    print(f'''
+    [N]for North 👆   
+    [S] for South 👇  
+    [E] for East 👉 
+    [W] for West 👈 
+    [Q] to Quit 🙁
 
-print('''
-                                                     Welcome {user_name}  😊
-''')
+    Now, you are at the {player.current_room.name} room
+    ''')
 
-print(f'''
+    user_direction = input("Next move ? ").upper()
 
-Your Journey start from room: {player.current_room.name} at {player.current_room.description}
-
-
-                        [N]for North 👆   [S] for South 👇  [E] for East 👉 [W] for West 👈 [Q] to Quit 🙁
-''')
-
-while True:
-
-    # make the player choose where to go ?
-
-    # make the input uppercase
-    user_direction = input("Next move ?  ").upper()
-
-    if user_direction == 'W':
-        # make the next move
-        next_move = player.current_room.w_to
-        if next_move == None:
-            print("Blocked, Try picking a new direction.")
-        else:
-            player.current_room = next_move
-            print(player.current_room.name)
-
-    elif user_direction == 'S':
-        next_move = player.current_room.s_to
-        if next_move == None:
-            print("Blocked, Try picking a new direction.")
-        else:
-            player.current_room = next_move
-            print(player.current_room.name)
-
-    elif user_direction == 'E':
-        next_move = player.current_room.e_to
-        if next_move == None:
-            print("Blocked, Try picking a new direction.")
-        else:
-            player.current_room = next_move
-            print(player.current_room.name)
-
-    elif user_direction == 'N':
+    # North
+    if user_direction == "N":
         next_move = player.current_room.n_to
         if next_move == None:
-            print("Blocked, Try picking a new direction.")
+            print("You are block, try picking different road")
         else:
             player.current_room = next_move
-            print(player.current_room.name)
 
-    elif user_direction == 'Q':
+# South
+    if user_direction == "S":
+        next_move = player.current_room.s_to
+        if next_move == None:
+            print("You are block, try picking different road")
+        else:
+            player.current_room = next_move
+
+# East
+    if user_direction == "E":
+        next_move = player.current_room.e_to
+        if next_move == None:
+            print("You are block, try picking different road")
+        else:
+            player.current_room = next_move
+
+    # West
+    if user_direction == "W":
+        next_move = player.current_room.w_to
+        if next_move == None:
+            print("You are block, try picking different road")
+        else:
+            player.current_room = next_move
+
+    if user_direction == "Q":
         print(f"Thanks for playing {user_name}! Come back soon!")
-        break
+        game_on = False
+
+
