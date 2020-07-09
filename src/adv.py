@@ -47,68 +47,58 @@ user_name = input('what is your name young man ? ')
 player = Player(user_name, room["outside"])
 
 
-while True:
-    print(f'''
-                                             Welcome {user_name}  😊
+print('''
+                                                     Welcome {user_name}  😊
+''')
+
+print(f'''
 
 Your Journey start from room: {player.current_room.name} at {player.current_room.description}
 
 
-                        [N]for North 👆   [S] for South 👇  [D] for East 👉 [A] for West 👈 [Q] to Quit 🙁
+                        [N]for North 👆   [S] for South 👇  [E] for East 👉 [W] for West 👈 [Q] to Quit 🙁
 ''')
 
-# make the player choose where to go ?
- 
-# make the input uppercase 
+while True:
+
+    # make the player choose where to go ?
+
+    # make the input uppercase
     user_direction = input("Next move ?  ").upper()
+
     if user_direction == 'W':
-        # make the next move 
-        next_move = player.current_room.n_to
+        # make the next move
+        next_move = player.current_room.w_to
         if next_move == None:
             print("Blocked, Try picking a new direction.")
         else:
-            player = Player(user_name, next_move)
-            print(player.current_room)
+            player.current_room = next_move
+            print(player.current_room.name)
+
     elif user_direction == 'S':
         next_move = player.current_room.s_to
         if next_move == None:
             print("Blocked, Try picking a new direction.")
         else:
-            player = Player(user_name, next_move)
-            print(player.current_room)
+            player.current_room = next_move
+            print(player.current_room.name)
 
-    elif user_direction == 'D':
+    elif user_direction == 'E':
         next_move = player.current_room.e_to
         if next_move == None:
             print("Blocked, Try picking a new direction.")
         else:
-            player = Player(user_name, next_move)
-            print(player.current_room)
+            player.current_room = next_move
+            print(player.current_room.name)
 
-    elif user_direction == 'A':
-        next_move = player.current_room.w_to
+    elif user_direction == 'N':
+        next_move = player.current_room.n_to
         if next_move == None:
             print("Blocked, Try picking a new direction.")
         else:
-            player = Player(user_name, next_move)
-            print(player.current_room)
+            player.current_room = next_move
+            print(player.current_room.name)
 
     elif user_direction == 'Q':
         print(f"Thanks for playing {user_name}! Come back soon!")
         break
-
-
-
-# Write a loop that:
-#
-
-# * Prints the current room name
-
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
